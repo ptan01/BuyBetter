@@ -8,6 +8,7 @@ const Login = () => {
 
     const [email , setEmail] = useState('')
     const [error , setError] = useState('')
+    const [show , setShow] = useState(false)
     const [success , setSuccess] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
@@ -75,7 +76,8 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                            <input type={show ? 'text' : "password"} name='password' placeholder="password" className="input input-bordered" required />
+                            <p className='w-[90px] my-1 btn btn-xs' onClick={()=>setShow(!show)}>Show Pass</p>
                             <label className="label">
                                 <p onClick={handlePassword} className="label-text-alt link link-hover">Forgot password?</p>
                             </label>
