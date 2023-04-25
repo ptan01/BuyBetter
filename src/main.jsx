@@ -9,6 +9,7 @@ import Details from './Routes/Details/Details'
 import ContextProvider from './privetRoute_Context/ContextProvider'
 import Login from './Routes/Login/Login'
 import Register from './Routes/Register/Register'
+import PrivetRoute from './privetRoute_Context/PrivetRoute'
 
 const router = createBrowserRouter([
   {
@@ -21,11 +22,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/products',
-        element: <Products></Products>
+        element: <PrivetRoute><Products></Products></PrivetRoute>
       },
       {
         path: '/details',
-        element: <Details></Details>
+        element: <PrivetRoute><Details></Details></PrivetRoute>
       },
       {
         path : '/login',

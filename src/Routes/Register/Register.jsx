@@ -21,7 +21,7 @@ const Register = () => {
         if(!/(?=.*[!#$%&? "])/.test(pass)){
             alert('Your password must contain at least one Special characters')
             return ;
-        }else if(!/(?=.*[0-9])/.text(pass)){
+        }else if(!/(?=.*[0-9])/.test(pass)){
            alert('Your password must contain at least one digit')
            return ;
         }
@@ -71,7 +71,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" required/>
+                            <input type="text" name='password' placeholder="password" className="input input-bordered" required/>
                             
                         </div>
                         <div className="form-control mt-6">

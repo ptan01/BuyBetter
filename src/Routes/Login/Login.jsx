@@ -7,6 +7,8 @@ const Login = () => {
     const {loginUser, forgetPassword} = useContext(AuthContext)
 
     const [email , setEmail] = useState('')
+    const [error , setError] = useState('')
+    const [success , setSuccess] = useState('')
 
 
     const handleLogin =(e)=>{
@@ -19,9 +21,11 @@ const Login = () => {
         loginUser(email , pass)
         .then((result)=>{
             const user = result.user ;
+            setSuccess('login successfully')
             console.log(user)
         })
         .catch(err => {
+            setError(err.message)
             console.log(err)
         })
 
@@ -76,6 +80,8 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='p-1 mb-5'>New on Bye better ? <span className='text-sky-600'><Link to='/register'>Please Register</Link></span></p>
+                    <p className='text-red-500'>{error}</p>
+                    <p className='text-green-500'>{success}</p>
                 </div>
             </div>
         </div>

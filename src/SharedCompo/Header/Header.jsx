@@ -4,8 +4,18 @@ import { AuthContext } from '../../privetRoute_Context/ContextProvider';
 
 const Header = () => {
 
-    const {user} = useContext(AuthContext)
+    const {user , logOut} = useContext(AuthContext)
     console.log(user)
+
+    const handleLogout =()=>{
+        logOut()
+        .then(()=>{
+            alert('sign out successfully')
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
 
     return (
         <div className="navbar bg-base-100 container mx-auto">
@@ -37,9 +47,9 @@ const Header = () => {
                 {
                     user ? <div className='flex'>
                         <p className='text-purple-500 font-semibold border-purple-700 border mr-2 rounded-lg'>{user.displayName}</p>
-                        <a className="btn btn-sm">Logout</a>
+                        <a onClick={handleLogout} className="btn btn-sm">Logout</a>
                         </div>
-                        : ''
+                        : <img className='w-[50px] h-[50px] rounded-xl' src="https://static.vecteezy.com/system/resources/previews/004/698/023/original/the-initial-letter-bb-logo-design-free-vector.jpg" alt="" />
 
                 }
             </div>
