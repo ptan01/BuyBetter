@@ -13,6 +13,8 @@ const Header = () => {
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/products">Products</Link></li>
                         <li><Link to="/details">Details</Link></li>
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/register">Register</Link></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl">Buy Better</a>
@@ -22,6 +24,8 @@ const Header = () => {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/products">Products</Link></li>
                     <li><Link to="/details">Details</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/register">Register</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">

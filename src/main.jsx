@@ -6,6 +6,9 @@ import Main from './Leyout/Main'
 import Home from './Routes/Home/Home'
 import Products from './Routes/Products/Products'
 import Details from './Routes/Details/Details'
+import ContextProvider from './privetRoute_Context/ContextProvider'
+import Login from './Routes/Login/Login'
+import Register from './Routes/Register/Register'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: '/details',
         element: <Details></Details>
+      },
+      {
+        path : '/login',
+        element: <Login></Login>
+      },
+      {
+        path : '/register',
+        element: <Register></Register>
       }
     ]
   }
@@ -30,6 +41,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
-  <RouterProvider router={router}></RouterProvider>
+  <ContextProvider>
+    <RouterProvider router={router}></RouterProvider>
+  </ContextProvider>
 
 )
