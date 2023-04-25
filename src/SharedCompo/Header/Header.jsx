@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../privetRoute_Context/ContextProvider';
 
 const Header = () => {
+
+    const {user} = useContext(AuthContext)
+    console.log(user)
+
     return (
         <div className="navbar bg-base-100 container mx-auto">
             <div className="navbar-start">
@@ -29,7 +34,14 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Get started</a>
+                {
+                    user ? <div className='flex'>
+                        <p className='text-purple-500 font-semibold border-purple-700 border mr-2 rounded-lg'>{user.displayName}</p>
+                        <a className="btn btn-sm">Logout</a>
+                        </div>
+                        : ''
+
+                }
             </div>
         </div>
     );

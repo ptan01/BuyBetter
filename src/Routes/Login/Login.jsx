@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../privetRoute_Context/ContextProvider';
+import { Link } from 'react-router-dom';
+
 
 const Login = () => {
+    const {loginUser, forgetPassword} = useContext(AuthContext)
+
+    const [email , setEmail] = useState('')
 
 
     const handleLogin =(e)=>{
@@ -10,7 +16,37 @@ const Login = () => {
         const pass = form.password.value ;
         console.log(email , pass )
 
+        loginUser(email , pass)
+        .then((result)=>{
+            const user = result.user ;
+            console.log(user)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
     }
+
+    const takeEmail = (event)=>{
+        setEmail(event.target.value)
+    }
+
+    const handlePassword =()=>{
+        if(!email){
+            alert('please input your email')
+            return
+        }
+       forgetPassword(email)
+       .then(()=>{
+        alert('Password reset email sent')
+       })
+       .catch(err=>{
+        console.log(err)
+       })
+    console.log(email)
+    }
+
+    
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -24,21 +60,22 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                            <input onBlur={takeEmail} type="text" name='email' placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" name='password' placeholder="password" className="input input-bordered" />
+                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <p onClick={handlePassword} className="label-text-alt link link-hover">Forgot password?</p>
                             </label>
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
+                    <p className='p-1 mb-5'>New on Bye better ? <span className='text-sky-600'><Link to='/register'>Please Register</Link></span></p>
                 </div>
             </div>
         </div>
